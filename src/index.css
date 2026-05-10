@@ -1,0 +1,216 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-gf-navy: #0a0a2e;
+  --color-gf-deep-purple: #1a0a3e;
+  --color-gf-coral: #ff6b6b;
+  --color-gf-magenta: #e91e8c;
+  --color-gf-electric: #7b2fbe;
+  --color-gf-white: #ffffff;
+  --color-gf-soft-pink: #ffb3d1;
+  --color-gf-rose: #c9a96e;
+  --color-gf-hot-pink: #e91e8c;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: #0a0a2e;
+  color: #ffffff;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+.gf-app-bg {
+  background: linear-gradient(165deg, #0a0a2e 0%, #1a0a3e 45%, #0a0a2e 100%);
+}
+
+.gf-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.gf-aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@keyframes aurora-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.32;
+  }
+  33% {
+    transform: translate(12%, -8%) scale(1.08);
+    opacity: 0.42;
+  }
+  66% {
+    transform: translate(-8%, 10%) scale(0.95);
+    opacity: 0.36;
+  }
+}
+
+@keyframes aurora-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate(-14%, 12%) scale(1.12);
+    opacity: 0.4;
+  }
+}
+
+@keyframes aurora-drift-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.05);
+    opacity: 0.25;
+  }
+  40% {
+    transform: translate(10%, 14%) scale(0.92);
+    opacity: 0.38;
+  }
+  80% {
+    transform: translate(-6%, -10%) scale(1.06);
+    opacity: 0.3;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gf-aurora-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gf-blob-1 {
+  width: 280px;
+  height: 280px;
+  background: #ff6b6b;
+  top: -80px;
+  right: -60px;
+  animation: aurora-drift-1 18s ease-in-out infinite;
+}
+
+.gf-blob-2 {
+  width: 320px;
+  height: 320px;
+  background: #e91e8c;
+  bottom: 15%;
+  left: -100px;
+  animation: aurora-drift-2 22s ease-in-out infinite;
+}
+
+.gf-blob-3 {
+  width: 260px;
+  height: 260px;
+  background: #7b2fbe;
+  top: 40%;
+  right: -80px;
+  animation: aurora-drift-3 25s ease-in-out infinite;
+}
+
+.gf-magenta-btn {
+  background: linear-gradient(135deg, #e91e8c 0%, #7b2fbe 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.2s ease,
+    filter 0.25s ease;
+}
+
+.gf-magenta-btn:hover {
+  box-shadow:
+    0 0 24px rgba(233, 30, 140, 0.55),
+    0 0 48px rgba(123, 47, 190, 0.35);
+  transform: translateY(-1px);
+}
+
+.gf-magenta-btn:active {
+  transform: translateY(0);
+}
+
+.gf-glow-hover {
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.gf-glow-hover:hover {
+  box-shadow: 0 0 20px rgba(201, 169, 110, 0.35);
+  border-color: rgba(255, 179, 209, 0.35);
+}
+
+.gf-subscribe-ring {
+  box-shadow:
+    0 0 0 1px rgba(233, 30, 140, 0.5),
+    0 0 28px rgba(233, 30, 140, 0.35),
+    0 0 48px rgba(123, 47, 190, 0.25);
+}
+
+@keyframes gf-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gf-spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 179, 209, 0.25);
+  border-top-color: #e91e8c;
+  animation: gf-spin 0.75s linear infinite;
+}
+
+/* Hide scrollbar on desktop outer but keep scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll-stable {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(233, 30, 140, 0.35) transparent;
+}
+
+/* Fixed FAB — aligned to 390px centered phone frame, above bottom nav */
+.gf-community-fab {
+  position: fixed;
+  right: max(1rem, calc(50% - 195px + 1rem));
+  bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+}
