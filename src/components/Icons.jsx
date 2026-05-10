@@ -32,9 +32,16 @@ export function IconCommunity({ active, className = 'h-6 w-6' }) {
   const stroke = active ? '#C9A96E' : 'rgba(255,255,255,0.55)'
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="9" cy="8" r="3" stroke={stroke} strokeWidth="1.7" />
+      <circle cx="9" cy="7.5" r="2.75" stroke={stroke} strokeWidth="1.7" />
       <path
-        d="M15 7h2.5M17 11h-5a4 4 0 0 0-4 4v2h8v-2a4 4 0 0 0-4-4Z"
+        d="M3.25 19.5c0-3.6 2.55-6.25 5.75-6.25s5.75 2.65 5.75 6.25"
+        stroke={stroke}
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+      <circle cx="16.25" cy="7.5" r="2.75" stroke={stroke} strokeWidth="1.7" />
+      <path
+        d="M10.5 19.5c0-3.6 2.55-6.25 5.75-6.25s5.75 2.65 5.75 6.25"
         stroke={stroke}
         strokeWidth="1.7"
         strokeLinecap="round"
